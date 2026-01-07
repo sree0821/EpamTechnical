@@ -7,7 +7,7 @@ namespace ConsoleApp1.OOP
     {
         protected string ApplicationUrl = "https://www.google.com";
 
-        // Abstract method - must be implemented by child classes
+        // Abstract method must be implemented by child classes
         public abstract void ExecuteTest();
 
         // Common reusable method

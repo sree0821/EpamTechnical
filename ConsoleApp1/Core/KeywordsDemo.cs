@@ -14,7 +14,6 @@ namespace IncubationProject.Core
         {
             try
             {
-                // Open browser & navigate
                 LaunchBrowser(ApplicationUrl);
                 Console.WriteLine("Browser launched and URL opened");
 
@@ -24,7 +23,6 @@ namespace IncubationProject.Core
                     Console.WriteLine("Valid WebDriver instance");
                 }
 
-                // Simulated test steps
                 for (int step = 1; step <= 5; step++)
                 {
                     if (step == 2)
@@ -36,7 +34,7 @@ namespace IncubationProject.Core
                     if (step == 4)
                     {
                         Console.WriteLine("Critical failure encountered");
-                        throw new Exception("Element not found"); // throw keyword
+                        throw new InvalidOperationException("element not found"); // throw keyword
                     }
 
                     Console.WriteLine($"Test step {step} executed");
@@ -48,7 +46,7 @@ namespace IncubationProject.Core
             }
             finally
             {
-                // finally keyword - cleanup
+                // finally keyword 
                 CloseBrowser();
                 Console.WriteLine("Browser closed in finally block");
             }

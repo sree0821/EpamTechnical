@@ -33,7 +33,6 @@ namespace IncubationProject.Core
         // private method - internal logic
         private void PerformLoginValidation()
         {
-            // Simulated validation
             bool isLoginSuccessful = true;
 
             if (isLoginSuccessful)

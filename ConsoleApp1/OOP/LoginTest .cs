@@ -9,13 +9,6 @@ namespace ConsoleApp1.OOP
             try
             {
                 OpenApplication();
-                Console.WriteLine("Login Test: Browser opened");
-
-                // Simulated login steps
-                Console.WriteLine("Entering username");
-                Console.WriteLine("Entering password");
-                Console.WriteLine("Clicking login button");
-
                 Console.WriteLine("Login Test Passed");
             }
             finally

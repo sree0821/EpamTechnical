@@ -7,7 +7,7 @@ namespace ConsoleApp1.OOP
     public class OverloadingAndAccessTask : BrowserBase
     {
         // protected -> accessible in child classes
-        protected string ApplicationUrl = "https://www.flipkart.com";
+        protected const string ApplicationUrl = "https://www.flipkart.com";
 
         // public -> accessible everywhere
         public void OpenApplication()

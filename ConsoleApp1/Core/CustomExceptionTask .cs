@@ -11,16 +11,12 @@ namespace ConsoleApp1.Core
         {
             try
             {
-                // Open browser
                 LaunchBrowser(ApplicationUrl);
                 Console.WriteLine("Browser launched");
-
-                // Simulated automation condition
                 bool isLoginButtonPresent = false;
 
                 if (!isLoginButtonPresent)
                 {
-                    // Throwing custom exception
                     throw new AutomationException("Login button not found on the page");
                 }
 
@@ -28,13 +24,11 @@ namespace ConsoleApp1.Core
             }
             catch (AutomationException ex)
             {
-                // Handling custom exception
                 Console.WriteLine("Custom automation exception handled");
                 Console.WriteLine(ex.Message);
             }
             finally
             {
-                // Cleanup
                 CloseBrowser();
                 Console.WriteLine("Browser closed in finally block");
             }

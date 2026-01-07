@@ -10,8 +10,6 @@ namespace ConsoleApp1.OOP
             {
                 OpenApplication();
                 Console.WriteLine("Search Test: Browser opened");
-
-                // Simulated search steps
                 Console.WriteLine("Entering search keyword");
                 Console.WriteLine("Clicking search");
 
