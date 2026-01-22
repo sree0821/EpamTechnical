@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumNUnitAutomation", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAutomationTests", "ApiAutomationTests\ApiAutomationTests.csproj", "{65C545DA-1021-4C65-859B-DA667B217E52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReqnrollProject", "ReqnrollProject\ReqnrollProject.csproj", "{CC4C6705-0756-41C3-9A97-58C1CC48786F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{65C545DA-1021-4C65-859B-DA667B217E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C545DA-1021-4C65-859B-DA667B217E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C545DA-1021-4C65-859B-DA667B217E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4C6705-0756-41C3-9A97-58C1CC48786F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4C6705-0756-41C3-9A97-58C1CC48786F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4C6705-0756-41C3-9A97-58C1CC48786F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4C6705-0756-41C3-9A97-58C1CC48786F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
