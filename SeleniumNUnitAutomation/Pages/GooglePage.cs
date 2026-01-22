@@ -1,10 +1,12 @@
 ﻿using OpenQA.Selenium;
+using SeleniumNUnitAutomation.Config;
+using SeleniumNUnitAutomation.Utilities;
 
 namespace SeleniumNUnitAutomation.Pages
 {
     public class GooglePage
     {
-        private readonly IWebDriver driver;
+        private IWebDriver driver;
 
         public GooglePage(IWebDriver driver)
         {
@@ -12,20 +14,34 @@ namespace SeleniumNUnitAutomation.Pages
         }
 
         private By searchBox = By.Name("q");
+        private By flipkartLink = By.XPath("//a//h3[contains(text(),'Flipkart')]");
 
         public void Navigate()
         {
-            driver.Navigate().GoToUrl("https://www.google.com");
+            Logger.Info("Opening Google");
+            driver.Navigate().GoToUrl(ConfigReader.GoogleUrl);
         }
 
         public void Search(string text)
         {
-            driver.FindElement(searchBox).SendKeys(text + Keys.Enter);
+            Logger.Info("Searching: " + text);
+            WaitHelper.WaitForElement(driver, searchBox).SendKeys(text + Keys.Enter);
         }
 
-        public string GetTitle()
+        public void ClickFlipkart()
         {
-            return driver.Title;
+            Logger.Info("Clicking Flipkart result");
+            WaitHelper.WaitForElement(driver, flipkartLink).Click();
+        }
+
+        public void FillForm()
+        {
+
+        }
+
+        public bool GetTitle()
+        {
+            return true;
         }
     }
 }

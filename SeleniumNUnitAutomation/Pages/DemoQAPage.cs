@@ -1,57 +1,68 @@
-﻿using OpenQA.Selenium;
+﻿using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium;
+using SeleniumNUnitAutomation.Config;
 using SeleniumNUnitAutomation.Utilities;
 
-namespace SeleniumNUnitAutomation.Pages
+public class DemoQAPage
 {
-    public class DemoQAPage
+    private readonly IWebDriver driver;
+
+    public DemoQAPage(IWebDriver driver)
     {
-        private IWebDriver driver;
+        this.driver = driver;
+    }
 
-        public DemoQAPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+    // Locators
+    private readonly By headerText = By.XPath("//h1");
+    private readonly By firstName = By.XPath("//input[@placeholder='First Name']");
+    private readonly By lastName = By.XPath("//input[@placeholder='Last Name']");
+    private readonly By address = By.XPath("//textarea");
+    private readonly By genderFemale = By.XPath("//input[@value='FeMale']");
+    private readonly By countryDropdown = By.Id("countries");
+    private readonly By email = By.Id("eid");
+    private readonly By phone = By.XPath("//input[@type='tel']");
+    private readonly By submitButton = By.Id("submitbtn");
 
-        // Locators
-        private By fullName = By.Id("userName");
-        private By email = By.Id("userEmail");
-        private By submitButton = By.Id("submit");
+    // Navigation
+    public void Navigate()
+    {
+        driver.Navigate().GoToUrl(ConfigReader.DemoSiteUrl);
+    }
 
-        public void Navigate()
-        {
-            driver.Navigate().GoToUrl("https://demoqa.com/text-box");
-        }
+    // Business Actions
+    public void EnterBasicInfo(string fname, string lname, string mail, string phoneNo)
+    {
+        WaitHelper.WaitForElement(driver, firstName).SendKeys(fname);
+        WaitHelper.WaitForElement(driver, lastName).SendKeys(lname);
+        WaitHelper.WaitForElement(driver, email).SendKeys(mail);
+        WaitHelper.WaitForElement(driver, phone).SendKeys(phoneNo);
+    }
 
-        public void FillForm(string name, string email)
-        {
-            driver.FindElement(By.Id("userName")).SendKeys(name);
-            driver.FindElement(By.Id("userEmail")).SendKeys(email);
-        }
+    public void EnterAddress(string value)
+    {
+        WaitHelper.WaitForElement(driver, address).SendKeys(value);
+    }
 
-        public void ScrollAndSubmit()
-        {
-            JavaScriptHelper.ScrollToBottom(driver);
-            driver.FindElement(submitButton).Click();
-        }
+    public void SelectGenderFemale()
+    {
+        WaitHelper.WaitForElement(driver, genderFemale).Click();
+    }
 
-        public void ClickSubmitSafely()
-        {
-            try
-            {
-                driver.FindElement(submitButton).Click();
-            }
-            catch (StaleElementReferenceException)
-            {
-                driver.FindElement(submitButton).Click();
-            }
-        }
+    public void SelectCountry(string country)
+    {
+        Logger.Info("Selecting country: " + country);
+        var dropdown = new SelectElement(WaitHelper.WaitForElement(driver, countryDropdown));
+        dropdown.SelectByText(country);
+    }
 
-        public void SubmitForm()
-        {
-            // Sometimes button is not visible → scroll
-            JavaScriptHelper.ScrollToBottom(driver);
+    public void Submit()
+    {
+        JavaScriptHelper.ScrollToBottom(driver);
+        WaitHelper.WaitForElement(driver, submitButton).Click();
+    }
 
-            driver.FindElement(submitButton).Click();
-        }
+    public string GetHeaderText()
+    {
+        return WaitHelper.WaitForElement(driver, headerText).Text;
     }
 }

@@ -1,18 +1,25 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using SeleniumNUnitAutomation.Config;
 
 namespace SeleniumNUnitAutomation.Base
 {
-    public class DriverFactory
+    public static class DriverFactory
     {
-        public static IWebDriver CreateDriver(string browser = "chrome")
+        public static IWebDriver CreateDriver()
         {
-            return browser.ToLower() switch
-            {
-                "firefox" => new FirefoxDriver(),
-                _ => new ChromeDriver()
-            };
+            IWebDriver driver;
+
+            if (ConfigReader.Browser.ToLower() == "firefox")
+                driver = new FirefoxDriver();
+            else
+                driver = new ChromeDriver();
+
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ConfigReader.ImplicitWait);
+
+            return driver;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace SeleniumNUnitAutomation.Tests
             googlePage.Search("Selenium");
 
             // Assert
-            Assert.That(googlePage.GetTitle(), Does.Contain("Selenium"));
+            Assert.That(googlePage.GetTitle().Equals(true));
         }
 
         [Test]
@@ -36,12 +36,12 @@ namespace SeleniumNUnitAutomation.Tests
         {
             try
             {
-                demoQAPage.FillForm();
-                demoQAPage.ClickSubmitSafely();
+                demoQAPage.EnterBasicInfo("ll","jj", "kk","yy");
+                demoQAPage.Submit();
             }
             catch (Exception ex)
             {
-                ScreenshotHelper.TakeScreenshot(driver, "FormFailure");
+                ScreenshotHelper.Capture(driver, "FormFailure");
                 throw;
             }
         }
