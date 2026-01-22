@@ -1,7 +1,4 @@
-using Reqnroll;
-using NUnit.Framework;
 using ReqnrollProject.Pages;
-using ReqnrollProject.Hooks;
 
 namespace ReqnrollProject.StepDefinitions
 {
